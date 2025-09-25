@@ -189,6 +189,7 @@
         </div>
       
         <div class="pricing-grid">
+      
           <!-- Day Pass -->
           <div class="price-card">
             <h4>Day Pass</h4>
@@ -199,14 +200,37 @@
               <button type="submit" class="btn-outline">Buy Day Pass</button>
             </form>
 
+
+
             <script>
-                function redirectToInstagram(event) {
-                  // Allow the form to submit normally
-                  setTimeout(() => {
-                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
-                  }, 100); // small delay to ensure the form submits
-                }
+                document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+                  form.addEventListener("submit", function(e) {
+                    e.preventDefault(); // prevent default page redirect
+                    const formData = new FormData(this);
+                
+                    fetch(this.action, {
+                      method: "POST",
+                      body: formData,
+                      headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                      if(response.ok) {
+                        // Redirect to Instagram after successful email
+                        window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+                      } else {
+                        alert("Oops! There was a problem sending your email.");
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error);
+                      alert("Oops! There was a problem sending your email.");
+                    });
+                  });
+                });
                 </script>
+
+
+
 
           </div>
       
@@ -220,15 +244,34 @@
               <button type="submit" class="btn-primary">Get 1 Month</button>
             </form>
 
-            <script>
-                function redirectToInstagram(event) {
-                  // Allow the form to submit normally
-                  setTimeout(() => {
-                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
-                  }, 100); // small delay to ensure the form submits
-                }
-                </script>
 
+
+            <script>
+                document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+                  form.addEventListener("submit", function(e) {
+                    e.preventDefault(); // prevent default page redirect
+                    const formData = new FormData(this);
+                
+                    fetch(this.action, {
+                      method: "POST",
+                      body: formData,
+                      headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                      if(response.ok) {
+                        // Redirect to Instagram after successful email
+                        window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+                      } else {
+                        alert("Oops! There was a problem sending your email.");
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error);
+                      alert("Oops! There was a problem sending your email.");
+                    });
+                  });
+                });
+                </script>
 
 
 
@@ -247,14 +290,31 @@
 
 
             <script>
-                function redirectToInstagram(event) {
-                  // Allow the form to submit normally
-                  setTimeout(() => {
-                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
-                  }, 100); // small delay to ensure the form submits
-                }
+                document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+                  form.addEventListener("submit", function(e) {
+                    e.preventDefault(); // prevent default page redirect
+                    const formData = new FormData(this);
+                
+                    fetch(this.action, {
+                      method: "POST",
+                      body: formData,
+                      headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                      if(response.ok) {
+                        // Redirect to Instagram after successful email
+                        window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+                      } else {
+                        alert("Oops! There was a problem sending your email.");
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error);
+                      alert("Oops! There was a problem sending your email.");
+                    });
+                  });
+                });
                 </script>
-  
 
 
 
@@ -271,16 +331,32 @@
               <button type="submit" class="btn-outline">Buy 6 Months</button>
             </form>
 
-
             <script>
-                function redirectToInstagram(event) {
-                  // Allow the form to submit normally
-                  setTimeout(() => {
-                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
-                  }, 100); // small delay to ensure the form submits
-                }
+                document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+                  form.addEventListener("submit", function(e) {
+                    e.preventDefault(); // prevent default page redirect
+                    const formData = new FormData(this);
+                
+                    fetch(this.action, {
+                      method: "POST",
+                      body: formData,
+                      headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                      if(response.ok) {
+                        // Redirect to Instagram after successful email
+                        window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+                      } else {
+                        alert("Oops! There was a problem sending your email.");
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error);
+                      alert("Oops! There was a problem sending your email.");
+                    });
+                  });
+                });
                 </script>
-
 
 
 
@@ -299,20 +375,66 @@
 
 
             <script>
-                function redirectToInstagram(event) {
-                  // Allow the form to submit normally
-                  setTimeout(() => {
-                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
-                  }, 100); // small delay to ensure the form submits
-                }
+                document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+                  form.addEventListener("submit", function(e) {
+                    e.preventDefault(); // prevent default page redirect
+                    const formData = new FormData(this);
+                
+                    fetch(this.action, {
+                      method: "POST",
+                      body: formData,
+                      headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                      if(response.ok) {
+                        // Redirect to Instagram after successful email
+                        window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+                      } else {
+                        alert("Oops! There was a problem sending your email.");
+                      }
+                    })
+                    .catch(error => {
+                      console.error(error);
+                      alert("Oops! There was a problem sending your email.");
+                    });
+                  });
+                });
                 </script>
 
-                
+
           </div>
+      
         </div>
       </section>
       
-    </section>
+      <!-- SINGLE SCRIPT TO HANDLE ALL FORMS -->
+      <script>
+      document.querySelectorAll("form[action^='https://formspree.io']").forEach(form => {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault(); // prevent default page redirect
+          const formData = new FormData(this);
+      
+          fetch(this.action, {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(response => {
+            if(response.ok) {
+              // Redirect to Instagram after successful email
+              window.location.href = "https://www.instagram.com/fenix_fitness.club/";
+            } else {
+              alert("Oops! There was a problem sending your email.");
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            alert("Oops! There was a problem sending your email.");
+          });
+        });
+      });
+      </script>
+      
 
     <section class="section" id="contact">
       <h3>Contact & Location</h3>
