@@ -1,142 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fenix Fitness Club — Skopje</title>
-  <meta name="description" content="Fenix Fitness Club — modern gym in Skopje. Memberships, classes, gallery and contact." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fenix Fitness</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="brand">
-      <img src="Logo.jpg" alt="Fenix Logo" />
-      <div>
-        <h1>Fenix Fitness Club</h1>
-        <div class="muted" style="font-size:12px">Skopje • Strength • Cardio • Community</div>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#prices">Prices</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div style="display:flex;align-items:center;gap:12px">
-      <div id="status" class="status-pill">
-        <span class="status-dot" id="status-dot"></span>
-        <span id="status-text">Checking...</span>
-      </div>
-      <a href="#prices" class="cta">Join Now</a>
+  <header class="header">
+    <div class="container">
+      <h1>Fenix Fitness</h1>
+      <nav>
+        <ul>
+          <li><a href="#prices">Membership</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" aria-label="Welcome">
-      <div class="hero-left">
-        <h2>Rise like a Fenix.<br />Train hard. Transform faster.</h2>
-        <p class="lead">Modern equipment, expert coaches, and a community that pushes you forward. Flexible memberships and a gym that fits your life.</p>
-        <div class="hero-cta">
-          <a class="btn-primary" href="#prices">See Plans</a>
-          <a class="btn-outline" href="#gallery">Take a Tour</a>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="container">
+      <h2>Train Hard. Stay Fit. Feel Strong.</h2>
+      <p>Your journey to a better body starts here.</p>
+      <a href="#prices" class="btn">See Membership Plans</a>
+    </div>
+  </section>
 
-      <aside class="hero-card">
-        <h4>Live Status</h4>
-        <div class="hours">Today's Hours • <span id="today-hours">—</span></div>
-        <div class="open-big"><span id="live-status">—</span></div>
-        <div class="small-note">Sunday: Rest Day 💤</div>
-      </aside>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <h3>About Fenix Fitness</h3>
-      <p class="muted">Fenix Fitness Club is a premium training facility located in Skopje. We combine a modern strength floor, cardio, functional training areas, and small group coaching so members of all levels can feel welcome and progress fast.</p>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" id="gallery">
-      <h3>Gym Photos</h3>
-      <div class="gallery">
-        <img src="images/photo1.jpg" alt="Gym photo 1">
-        <img src="images/photo2.jpg" alt="Gym photo 2">
-        <img src="images/photo3.jpg" alt="Gym photo 3">
-      </div>
-    </section>
-
-    <!-- PRICES -->
-    <section class="section" id="prices">
+  <section class="section" id="prices">
+    <div class="container">
       <h3>Membership Plans</h3>
-      <div style="margin-bottom:12px;color:var(--muted)">
-        Choose a plan that fits your schedule — these are our most popular options.
-      </div>
+      <p>Choose a plan that fits your schedule — these are our most popular options.</p>
       <div class="pricing-grid">
         <div class="price-card">
           <h4>Day Pass</h4>
-          <div class="price">$7 <small>/ day</small></div>
-          <div class="muted">Single day access • No commitments</div>
-          <a href="https://formspree.io/f/mpwywqja" target="_blank" class="btn-outline buy-btn">Buy Day Pass</a>
-        </div>
-        <div class="price-card best">
-          <h4>1 Month</h4>
-          <div class="price">$45 <small>/ month</small></div>
-          <div class="muted">Unlimited access for 30 days • Free gym intro session</div>
-          <a href="https://formspree.io/f/mpwywqja" target="_blank" class="btn-primary buy-btn">Get 1 Month</a>
+          <p>$10 / day</p>
+          <ul>
+            <li>Access to gym equipment</li>
+            <li>Free Wi-Fi</li>
+            <li>Locker access</li>
+          </ul>
         </div>
         <div class="price-card">
-          <h4>3 Months</h4>
-          <div class="price">$120 <small>/ 3 months</small></div>
-          <div class="muted">Best for short-term commit • Save 11% vs monthly</div>
-          <a href="https://formspree.io/f/mpwywqja" target="_blank" class="btn-outline buy-btn">Buy 3 Months</a>
+          <h4>Monthly</h4>
+          <p>$50 / month</p>
+          <ul>
+            <li>Unlimited access</li>
+            <li>Free group classes</li>
+            <li>Locker & shower access</li>
+          </ul>
         </div>
         <div class="price-card">
-          <h4>6 Months</h4>
-          <div class="price">$210 <small>/ 6 months</small></div>
-          <div class="muted">Half-year plan with priority booking for classes</div>
-          <a href="https://formspree.io/f/mpwywqja" target="_blank" class="btn-outline buy-btn">Buy 6 Months</a>
-        </div>
-        <div class="price-card">
-          <h4>1 Year</h4>
-          <div class="price">$360 <small>/ year</small></div>
-          <div class="muted">Best value • Includes 3 free PT sessions</div>
-          <a href="https://formspree.io/f/mpwywqja" target="_blank" class="btn-primary buy-btn">Buy 1 Year</a>
+          <h4>Annual</h4>
+          <p>$500 / year</p>
+          <ul>
+            <li>All Monthly benefits</li>
+            <li>Personal trainer session included</li>
+            <li>Exclusive discounts</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <h3>Contact & Location</h3>
-      <form class="contact-form" action="https://formspree.io/f/mpwywqja" method="POST" target="_blank">
-        <label for="name">Your name</label>
-        <input id="name" name="name" placeholder="Full name" required>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@email.com" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="I want to join, or ask something..." required></textarea>
-
-        <button type="submit">Send message</button>
+  <section class="section" id="contact">
+    <div class="container">
+      <h3>Contact Us</h3>
+      <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
       </form>
-    </section>
-
-  </main>
+    </div>
+  </section>
 
   <footer>
-    <div style="max-width:1100px;margin:0 auto;text-align:center;color:var(--muted)">
-      © 2025 Fenix Fitness Club — All rights reserved.
+    <div class="container">
+      <p>&copy; 2025 Fenix Fitness. All rights reserved.</p>
     </div>
   </footer>
-
-  <script src="js/script.js"></script> <!-- optional for live status -->
 </body>
 </html>
