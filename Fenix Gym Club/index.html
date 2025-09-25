@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fenix Fitness Club — Skopje</title>
+  <meta name="description" content="Fenix Fitness Club — modern gym in Skopje. Memberships, classes, open/closed live status, gallery and contact." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f10; /* deep black */
+      --panel:#151617;
+      --accent:#ff6b20; /* light orange */
+      --accent-2:#ff3b2f; /* logo red-ish */
+      --muted:#9aa0a6;
+      --glass: rgba(255,255,255,0.03);
+      --card-radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;min-height:100%;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:linear-gradient(180deg,var(--bg) 0%, #0b0b0b 100%);
+      color:#eef2f3; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      -webkit-text-size-adjust:100%;
+    }
+
+    /* Header / Nav */
+    .site-header{position:sticky;top:0;z-index:60;background:linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35));backdrop-filter: blur(6px);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{height:54px;width:auto;border-radius:10px;background:linear-gradient(120deg,var(--accent) 0%, var(--accent-2) 100%);padding:6px}
+    .brand h1{font-size:18px;margin:0;font-weight:700;color:#fff}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent)}
+    .cta{background:linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%);color:#111;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none}
+
+    /* Status pill */
+    .status-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);font-weight:700}
+    .status-dot{height:10px;width:10px;border-radius:50%;background:limegreen}
+    .status-dot.closed{background:#ff3b2f}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 4%;max-width:1200px;margin:18px auto}
+    .hero-left h2{font-size:44px;line-height:1.02;margin:0 0 12px;color:#fff}
+    .hero-left p.lead{color:var(--muted);margin:0 0 22px;font-size:18px}
+    .hero-cta{display:flex;gap:14px}
+    .btn-outline{border-radius:12px;padding:12px 16px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;text-decoration:none;font-weight:700}
+    .btn-primary{border-radius:12px;padding:12px 16px;border:none;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#0b0b0b;text-decoration:none;font-weight:800}
+
+    /* Right card */
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 30px rgba(0,0,0,0.5)}
+    .hero-card h4{margin:0 0 8px;color:var(--accent)}
+    .hours{font-size:14px;color:var(--muted);margin-bottom:10px}
+    .open-big{font-size:24px;font-weight:800;margin:8px 0}
+    .small-note{font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    .section{max-width:1200px;margin:36px auto;padding:22px 4%}
+    .section h3{margin:0 0 18px;color:var(--accent);font-size:22px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .28s ease, box-shadow .28s ease}
+    .gallery img:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.7)}
+
+    /* Pricing */
+    .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .price-card{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .price-card.best{transform:scale(1.04);border:2px solid var(--accent)}
+    .price-card h4{margin:0;color:#fff}
+    .price{font-size:20px;font-weight:800}
+    .price small{display:block;color:var(--muted);font-weight:600}
+    .buy-btn{margin-top:auto;align-self:stretch;text-align:center}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:24px}
+    .contact-form input,.contact-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+    .contact-form label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    .contact-form button{margin-top:10px;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);border:none;padding:12px 16px;border-radius:10px;color:#0b0b0b;font-weight:800}
+
+    /* Footer */
+    footer{padding:28px 4%;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+    .socials{display:flex;gap:12px;justify-content:center;margin-top:8px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));text-decoration:none}
+
+    /* Modal (lightbox) */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8));z-index:120}
+    .modal img{max-width:92%;max-height:86%;border-radius:12px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px;padding:28px 4%}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .pricing-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:600px){
+      nav{display:none}
+      .site-header{padding:12px}
+      .brand img{height:46px}
+      .gallery img{height:160px}
+      .pricing-grid{grid-template-columns:1fr}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .pill{padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="Logo.jpg" alt="Fenix Logo" />
+      <div>
+        <h1>Fenix Fitness Club</h1>
+        <div class="muted" style="font-size:12px">Skopje • Strength • Cardio • Community</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#prices">Prices</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div id="status" class="status-pill">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-text">Checking...</span>
+      </div>
+      <a href="#prices" class="cta">Join Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-left">
+        <h2>Rise like a Fenix.<br />Train hard. Transform faster.</h2>
+        <p class="lead">Modern equipment, expert coaches, and a community that pushes you forward. Flexible memberships and a gym that fits your life.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="#prices">See Plans</a>
+          <a class="btn-outline" href="#gallery">Take a Tour</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h4>Live Status</h4>
+        <div class="hours">Today's Hours • <span id="today-hours">—</span></div>
+        <div class="open-big"><span id="live-status">—</span></div>
+        <div class="small-note">Sunday: Rest Day 💤</div>
+      </aside>
+    </section>
+
+    <section class="section" id="about">
+      <h3>About Fenix Fitness</h3>
+      <p class="muted">Fenix Fitness Club is a premium training facility located in Skopje. We combine a modern strength floor, cardio, functional training areas, and small group coaching so members of all levels can feel welcome and progress fast.</p>
+      <div style="display:flex;gap:18px;margin-top:18px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px;background:var(--panel);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+          <div style="font-weight:700;color:var(--accent)">Pro Equipment</div>
+          <div class="muted" style="margin-top:8px">Deadlift platforms, free weights, power racks, top-tier cardio machines and more.</div>
+        </div>
+        <div style="flex:1;min-width:220px;background:var(--panel);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+          <div style="font-weight:700;color:var(--accent)">Certified Coaches</div>
+          <div class="muted" style="margin-top:8px">Coaches available for personal training and small-group classes.</div>
+        </div>
+        <div style="flex:1;min-width:220px;background:var(--panel);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+          <div style="font-weight:700;color:var(--accent)">Flexible Plans</div>
+          <div class="muted" style="margin-top:8px">Daily passes, monthly plans and discounted yearly memberships.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <h3>Gym Photos</h3>
+      <div class="gallery">
+        <img src="https://lh3.googleusercontent.com/geougc/AF1QipOC0I3JN9qt7w7JAkMZv5_v1t3xgRhDU2337QT1=h400-no">
+        <img src="https://lh3.googleusercontent.com/geougc/AF1QipPpS0fkf9Dyw8KQIwUf6WfZMaN5iMn9K1yKAkbX=h400-no" alt="Weights area" data-full="https://images.unsplash.com/photo-1571019613914-85f342c1d4b1?auto=format&fit=crop&w=2000&q=90">
+        <img src="https://lh3.googleusercontent.com/geougc/AF1QipMsr5wtKWGatvxr6iq4VCgqHLRJBjCyuOZrrHQT=h400-no" alt="Functional training" data-full="https://images.unsplash.com/photo-1594737625785-cfba2f3c2b37?auto=format&fit=crop&w=2000&q=90">
+      </div>
+    </section>
+
+    <section class="section" id="prices">
+        <h3>Membership Plans</h3>
+        <div style="margin-bottom:12px;color:var(--muted)">
+          Choose a plan that fits your schedule — these are our most popular options.
+        </div>
+      
+        <div class="pricing-grid">
+          <!-- Day Pass -->
+          <div class="price-card">
+            <h4>Day Pass</h4>
+            <div class="price">$7 <small>/ day</small></div>
+            <div class="muted">Single day access • No commitments</div>
+            <form action="https://formspree.io/f/mpwywqja" method="POST" class="buy-btn">
+              <input type="hidden" name="plan" value="Day Pass - $7/day">
+              <button type="submit" class="btn-outline">Buy Day Pass</button>
+            </form>
+
+            <script>
+                function redirectToInstagram(event) {
+                  // Allow the form to submit normally
+                  setTimeout(() => {
+                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
+                  }, 100); // small delay to ensure the form submits
+                }
+                </script>
+
+          </div>
+      
+          <!-- 1 Month -->
+          <div class="price-card best">
+            <h4>1 Month</h4>
+            <div class="price">$45 <small>/ month</small></div>
+            <div class="muted">Unlimited access for 30 days • Free gym intro session</div>
+            <form action="https://formspree.io/f/mpwywqja" method="POST" class="buy-btn">
+              <input type="hidden" name="plan" value="1 Month - $45">
+              <button type="submit" class="btn-primary">Get 1 Month</button>
+            </form>
+
+            <script>
+                function redirectToInstagram(event) {
+                  // Allow the form to submit normally
+                  setTimeout(() => {
+                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
+                  }, 100); // small delay to ensure the form submits
+                }
+                </script>
+
+
+
+
+
+          </div>
+      
+          <!-- 3 Months -->
+          <div class="price-card">
+            <h4>3 Months</h4>
+            <div class="price">$120 <small>/ 3 months</small></div>
+            <div class="muted">Best for short-term commit • Save 11% vs monthly</div>
+            <form action="https://formspree.io/f/mpwywqja" method="POST" class="buy-btn">
+              <input type="hidden" name="plan" value="3 Months - $120">
+              <button type="submit" class="btn-outline">Buy 3 Months</button>
+            </form>
+
+
+            <script>
+                function redirectToInstagram(event) {
+                  // Allow the form to submit normally
+                  setTimeout(() => {
+                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
+                  }, 100); // small delay to ensure the form submits
+                }
+                </script>
+  
+
+
+
+
+          </div>
+      
+          <!-- 6 Months -->
+          <div class="price-card">
+            <h4>6 Months</h4>
+            <div class="price">$210 <small>/ 6 months</small></div>
+            <div class="muted">Half-year plan with priority booking for classes</div>
+            <form action="https://formspree.io/f/mpwywqja" method="POST" class="buy-btn">
+              <input type="hidden" name="plan" value="6 Months - $210">
+              <button type="submit" class="btn-outline">Buy 6 Months</button>
+            </form>
+
+
+            <script>
+                function redirectToInstagram(event) {
+                  // Allow the form to submit normally
+                  setTimeout(() => {
+                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
+                  }, 100); // small delay to ensure the form submits
+                }
+                </script>
+
+
+
+
+
+          </div>
+      
+          <!-- 1 Year -->
+          <div class="price-card">
+            <h4>1 Year</h4>
+            <div class="price">$360 <small>/ year</small></div>
+            <div class="muted">Best value • Includes 3 free PT sessions</div>
+            <form action="https://formspree.io/f/mpwywqja" method="POST" class="buy-btn">
+              <input type="hidden" name="plan" value="1 Year - $360">
+              <button type="submit" class="btn-primary">Buy 1 Year</button>
+            </form>
+
+
+            <script>
+                function redirectToInstagram(event) {
+                  // Allow the form to submit normally
+                  setTimeout(() => {
+                    window.location.href = "https://www.instagram.com/yourusername/"; // Replace with your IG
+                  }, 100); // small delay to ensure the form submits
+                }
+                </script>
+
+                
+          </div>
+        </div>
+      </section>
+      
+    </section>
+
+    <section class="section" id="contact">
+      <h3>Contact & Location</h3>
+      <div class="contact-grid">
+        <div>
+          <form class="contact-form" id="contactForm">
+            <label for="name">Your name</label>
+            <input id="name" name="name" placeholder="Full name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="I want to join, or ask something..." required></textarea>
+
+            <button type="submit">Send message</button>
+          </form>
+
+          <div style="margin-top:12px;color:var(--muted);font-size:13px">Prefer Instagram? <a href="https://www.instagram.com/fenix_fitness.club/" target="_blank" class="muted">@fenix_fitness.club
+        </a></div>
+        </div>
+
+        <aside style="background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)">
+          <div style="font-weight:700;color:var(--accent)">Our address</div>
+          <div class="muted" style="margin:8px 0">Centar, Skopje, North Macedonia</div>
+
+          <div style="height:260px;border-radius:10px;overflow:hidden;margin-top:12px;border:1px solid rgba(255,255,255,0.02)">
+            <iframe title="map" width="100%" height="100%" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2714.4415092853133!2d21.3923814!3d41.991236!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135415affcd66619%3A0x31787298dedf80d1!2sFenix%20fitness%20club!5e1!3m2!1sen!2smk!4v1758757978967!5m2!1sen!2smk" allowfullscreen></iframe>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="Logo.jpg" alt="logo" style="height:48px;border-radius:10px;padding:6px;background:linear-gradient(120deg,var(--accent),var(--accent-2))">
+          <div>
+            <div style="font-weight:700">Fenix Fitness Club</div>
+            <div class="muted">Centar, Skopje • Open to everyone</div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="https://www.instagram.com/fenix_fitness.club/" target="_blank" aria-label="Instagram"> 
+            <!-- instagram svg -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-opacity="0.8"/><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" stroke="white" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.5" cy="6.5" r="0.8" fill="white"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">© 2025 Fenix Fitness Club — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Lightbox modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <img id="modalImg" src="" alt="Expanded photo">
+  </div>
+
+  <script>
+    // Opening hours config (local time)
+    const openingHours = {
+  1: { open: "09:00", close: "22:00" }, // Monday
+  2: { open: "09:00", close: "22:00" }, // Tuesday
+  3: { open: "09:00", close: "22:00" }, // Wednesday
+  4: { open: "09:00", close: "22:00" }, // Thursday
+  5: { open: "09:00", close: "22:00" }, // Friday
+  6: { open: "10:00", close: "20:00" }, // Saturday
+  0: null                                // Sunday closed
+};
+
+
+    function hhmmToMinutes(t){const [h,m]=t.split(':').map(Number);return h*60+m}
+
+    function updateStatus(){
+      const now = new Date();
+      const day = now.getDay();
+      const cfg = openingHours[day];
+      const minutes = now.getHours()*60 + now.getMinutes();
+      const openMin = hhmmToMinutes(cfg.open);
+      const closeMin = hhmmToMinutes(cfg.close);
+      const isOpen = minutes >= openMin && minutes < closeMin;
+
+      const statusText = document.getElementById('status-text');
+      const statusDot = document.getElementById('status-dot');
+      const live = document.getElementById('live-status');
+      const todayHours = document.getElementById('today-hours');
+
+      todayHours.textContent = `${cfg.open} — ${cfg.close}`;
+
+      if(isOpen){
+        statusText.textContent = 'OPEN';
+        statusDot.classList.remove('closed');
+        live.textContent = 'Open now — Come train!';
+      } else {
+        statusText.textContent = 'CLOSED';
+        statusDot.classList.add('closed');
+        live.textContent = 'Closed — See you soon';
+      }
+    }
+
+    // run immediately and every minute
+    updateStatus();
+    setInterval(updateStatus, 60*1000);
+
+    // Gallery modal logic
+
+
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if(e.target.id === 'modal' || e.target.tagName === 'IMG'){
+        e.currentTarget.style.display = 'none';
+        e.currentTarget.setAttribute('aria-hidden','true');
+      }
+    });
+
+    // Contact form: open mailto so there's no server required
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  fetch("https://formspree.io/f/mpwywqja", {
+    method: "POST",
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("✅ Your message has been sent successfully!");
+      form.reset();
+    } else {
+      alert("❌ There was a problem sending your message. Try again later.");
+    }
+  })
+  .catch(error => {
+    alert("⚠️ Network error. Please try again.");
+  });
+});
+
+
+    // Small accessibility: close modal with Escape
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>
